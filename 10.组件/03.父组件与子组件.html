@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <cpnc2></cpnc2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  const cpnC1 = Vue.extend({
+    template:`
+      <div>
+        <h3>这里是标题1</h3>
+        <p>我是组件1，哈哈哈哈哈哈哈</p>
+      </div>
+    `
+  });
+  //Vue.component("cpnc1",cpnC1)//标签里的字符都要小写
+
+  //extend继承的名字没有s
+  const cpnC2 = Vue.extend({
+    template:`
+      <div>
+        <h3>这里是标题2</h3>
+        <p>我是组件2，咩咩咩咩咩咩</p>
+        <cpn1></cpn1>
+      </div>
+
+    `,
+    components:{//组件里面注册组件，这个cpnC2就是父组件
+      cpn1:cpnC1
+    }
+    // <cpn1></cpn1>在div里面用才能生效，单独用会报错
+  });
+  //Vue可以看做是root组件，里面也有Template方法
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊"
+    },
+    methods:{
+
+    },
+    components:{
+      cpnc2:cpnC2
+    }
+  })
+</script>
+</body>
+</html>

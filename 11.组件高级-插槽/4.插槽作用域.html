@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>修改插槽作用域在2.5.X版本就不必须用template 标签了</h2>
+
+  <cpn>
+    <template slot-scope="slot">
+      <span v-for="item in slot.data">{{item}} - </span>
+    </template>
+  </cpn>
+  <cpn>
+    <templat slot-scope="slot" slot="slot1">
+      <span>{{slot.data.join(" ** ")}} </span>
+    </templat>
+  </cpn>
+</div>
+
+
+<template id ="cpn">
+  <div>
+    <slot :data="pLang">
+      <ul>
+        <li v-for="item in pLang">{{item}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊"
+    },
+    methods:{
+
+    },
+    components:{
+      cpn:{
+        template:"#cpn",
+        data(){
+          return {
+            pLang:["java","python","go","C++"]
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+</div>
+<template id="cpn1">
+  <div>
+    <h3>当前计数：{{counter}}</h3>
+    <button @click="incresement">+</button>
+    <button @click="decrement">-</button>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  Vue.component("cpn1",{
+    template:'#cpn1',
+    data(){//因为组件可以被多次调用，用函数返回的话每次都是新的值，相互之间不受影响
+      return {
+        counter:0
+      }
+    },
+    methods: {
+      incresement(){
+        return this.counter++
+      },
+      decrement(){
+        return this.counter--
+      }
+    }
+  })
+
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊"
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

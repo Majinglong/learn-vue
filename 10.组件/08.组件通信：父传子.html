@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h3>调用时必须用v-bind绑定，才会去父组件里面查数据</h3>
+  <cpn v-bind:clang="lang" :cmessage="message"></cpn>
+</div>
+
+<template id ='cpn'>
+  <div>
+    <h3>{{cmessage}}</h3>
+    <ul>
+      <li v-for="item in clang">{{item}}</li>
+    </ul>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const cpn = {
+    template:'#cpn',
+    data(){
+      return{}
+    },
+    methods: {
+
+    },
+    //props:["clang","cmessage"]//使用数组形式的简单使用
+    //使用对象设置props参数的属性
+    props:{
+      cmessage:{
+        type:String,//验证数据的属性
+        default:"默认标题",//设置默认值
+        required:true//数据是不是必须传来的，是必须传但是没传会在控制台报错
+      },
+      clang:{
+        type:Array,
+        default(){//类型是对象或者数组时，默认值必须是一个函数
+          return[]
+        }
+      }
+    }
+  }
+
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊",
+      lang:['java','python','go']
+    },
+    methods:{
+
+    },
+    components:{
+      cpn//对象增强写法
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  const name="zhangfei";
+  const age =45;
+  const height = 1.78;
+
+  //ES5
+  const obj1 = {
+    name:name,
+    age:age,
+    height:height,
+    run:function () {
+    }
+  }
+  console.log(obj1)
+  //ES6  属性的增强写法  把名当做key 值当做value存起来，方便写
+  const obj2 = {
+    name,
+    age,
+    height,
+    run(){//函数的增强写法
+    }
+  }
+  console.log(obj2)
+</script>
+</body>
+</html>

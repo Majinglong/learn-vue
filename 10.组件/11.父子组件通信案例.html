@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>父组件num1:{{num1}}</h2>
+  <h2>父组件num2:{{num2}}</h2>
+  <cpn :cnum1="num1" :cnum2="num2" v-on:changnum1="changNum1" @changnum2="changNum2"/>
+</div>
+
+<template id ="cpn1">
+  <div>
+    <h4>cnum1:{{cnum1}}</h4>
+    <h4>dnum1:{{dnum1}}</h4>
+    <input :value="dnum1"  @input="changednum1" type="text"/>
+
+    <h4>cnum2:{{cnum2}}</h4>
+    <h4>dnum2:{{dnum2}}</h4>
+    <input :value="dnum2"  @input="changednum2" type="text"/>
+    <!--<input v-model="dnum2" @input="changednum2"  type="text">-->
+  </div>
+
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      num1:5,
+      num2:6
+    },
+    methods:{
+      changNum1(value){
+        this.num1 = parseFloat(value)
+      },
+      changNum2(value){
+        this.num2 = parseFloat(value)
+      }
+    },
+    components:{
+      cpn:{
+        template:"#cpn1",
+        props:{
+          cnum1:Number,
+          cnum2:Number
+        },
+        data(){
+          return{
+            dnum1:this.cnum1,
+            dnum2:this.cnum2
+          }
+        },
+        methods:{
+          changednum1(event){
+            this.dnum1 = event.target.value;//用data或者计算属性修改
+            this.$emit('changnum1',this.dnum1)
+            //修改dnum2
+            this.dnum2 = this.dnum1*100
+            this.$emit('changnum2',this.dnum2)
+          },
+          changednum2(event){
+            this.dnum2 = event.target.value;
+            this.$emit('changnum2',this.dnum2)
+            //修改dnum1
+            this.dnum1 = this.dnum2/100
+            this.$emit("changnum1",this.dnum1)
+          }
+        }
+      },
+    }
+  })
+</script>
+</body>
+</html>

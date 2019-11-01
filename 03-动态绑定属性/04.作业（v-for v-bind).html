@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <style>
+    .active{
+      color: red;
+    }
+
+  </style>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="(item,index) in language" :class="{active:currentIndex==index}" @click="change(index)" >{{index}}.{{item}}</li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊",
+      language:["yuwen","english","math"],
+      currentIndex:-1
+    },
+    methods:{
+      change:function (index) {
+        this.currentIndex = index
+      }
+    }
+  })
+</script>
+</body>
+</html>

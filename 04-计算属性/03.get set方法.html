@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{fullName1}}</h2>
+  <h2>{{fullName2}}</h2>
+  <h2>{{fullName3}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      firstName:'Tom',
+      lastName:'White'
+    },
+    methods:{
+
+    },
+    computed:{
+      fullName1:function () {//这是简写
+        return this.firstName+" "+this.lastName;
+      },
+      fullName2:{//完全的包括get 和set2个方法，set方法一般不写
+        set:function (newName) {
+          console.log("----");
+          let names = newName.split(" ");
+          this.firstName = names[0];
+          this.lastName = names[1]
+          //前台用在控制台用app.fullName2 = "andy Black"可以修改
+
+        },
+        get:function () {
+          return this.firstName+" "+this.lastName;
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

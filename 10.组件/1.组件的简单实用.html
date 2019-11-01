@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <h2>组件要在vue管理的实体里面才能生效</h2>
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+  //组件构造器
+  const cpnConstructor = Vue.extend({//传递一个模板；使用 ``写字符串，可以换行，es6的语法
+    template:`
+      <div>
+        <h1>标题</h1>
+        <p>你好，组件</p>
+      </div>
+    `,
+  });
+  //注册组件
+  Vue.component("cpn",cpnConstructor);//一个参数是组件的标签名/一个是构造
+
+  //使用标签，使用组件
+
+
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊"
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

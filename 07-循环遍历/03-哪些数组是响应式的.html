@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="item in letters">{{item}}</li>
+  </ul>
+  <button @click="btnClick">Button</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      letters:['a','b','c','D','E']
+    },
+    methods:{
+      btnClick(){
+        //响应式的方法push pop unshift shift slice sort reverse ;vue 内置的set方法
+        //不能响应的是：使用数组的下标修改数据
+        //push:从后面插入
+        //this.letters.push("qq")
+        // //pop：从后面删除
+        //this.letters.pop()
+         //shift：从前面删除
+        // this.letters.shift()
+        //unshift从前面插入
+        // this.letters.unshift("cc","dd")
+        //slice:插入、删除、替换    splice(start: number, deleteCount: number, ...items: T[]): T[];
+        //splice(start) :从哪个开始
+        //删除：第二个参数是删除的个数  slice(1,2)
+        //替换：第二个参数是要替换几个元素。后面是要添加的元素，个数可以和前面不等。就是在把前面的几个删除了，在插入添加的
+        //插入：第2个参数是0，后面是添加的内容
+        console.log("aa")
+         // this.letters.splice(1,2,'x','y')
+        //sort 排序，可以跟排序的具体方法
+        //this.letters.sort();
+        //reverse:数字翻转
+        //this.letters.reverse();
+        //Vue.set(要修改的对象，索引值，修改后的值)
+        //Vue.set(this.letters,2,'eee')
+        //数组下标:能修改值，但是不会修改页面上的显示，Vue不监听这个操作
+        this.letters[2]='dddd'
+      }
+    }
+  })
+</script>
+</body>
+</html>

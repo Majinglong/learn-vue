@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h2>var没有 块级作用域</h2>
+<h2>javaScript设计时if for没有作用域，函数有作用域</h2>
+
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+
+
+
+* const 将变量修改为的常量，优先使用const，需要改变某一个标识符时才用let.
+
+*
+不能修改
+*
+定义标识符的时候必须赋值
+*
+常量：指向的对象的不能修改（指向内存地址），对象的属性可以修改
+
+
+
+<script>
+  const btns = document.getElementsByTagName("button");
+/*  for(var i=0;i<btns.length;i++){
+    btns[i].addEventListener('click',function () {
+      console.log("第"+i+"个按钮") 全部显示第5个按钮
+    })
+  }*/
+/*//闭包可以解决这个问题：函数有块级作用域
+  for(var i=0;i<btns.length;i++){
+    (function (i) {
+      btns[i].addEventListener('click',function () {
+        console.log("第"+i+"个按钮") //显示第0-4个按钮被点击
+      })
+    })(i)
+  }*/
+    for(let i=0;i<btns.length;i++){
+      btns[i].addEventListener('click',function () {
+        console.log("第"+i+"个按钮")
+      })
+    }
+
+</script>
+</body>
+</html>

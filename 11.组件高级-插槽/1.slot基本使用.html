@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <cpn><i>这个插槽有点意思</i></cpn>
+  <cpn><input type="text" placeholder="插槽你好吗"></cpn>
+  <cpn></cpn>
+  <cpn><button>按钮三胞胎-老大</button>
+    <button>按钮三胞胎-老2</button>
+    <button>按钮三胞胎-老傻</button></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h3>我是个模板</h3>
+    <p>给定插槽的默认值了</p>
+    <slot><button>我是个默认的按钮</button></slot>
+
+  </div>
+
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊"
+    },
+    methods:{
+
+    },
+    components:{
+      cpn:{
+        template:"#cpn"
+      }
+    }
+  })
+</script>
+</body>
+</html>

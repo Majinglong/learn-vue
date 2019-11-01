@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <label for="lecense">
+    <input type="checkbox" value="" v-model="isAgree" name="license">同意
+  </label>
+  <h3>您的选择是：{{isAgree}}</h3>
+  <button :disabled="!isAgree">下一步</button>
+
+
+  <input name="hobby" type="checkbox" v-model="hobbies" value="Python">python
+  <input name="hobby" type="checkbox" v-model="hobbies" value="Go">go
+  <input name="hobby" type="checkbox" v-model="hobbies" value="Java">java
+  <input name="hobby" type="checkbox" v-model="hobbies" value="C++">C++
+
+  <h3>您的选择是：{{hobbies}}</h3>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊",
+      isAgree:false,
+      hobbies:[]
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

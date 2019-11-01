@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+  [v-cloak]{
+    display:none;
+  }
+</style>
+<body>
+
+v-cloak在vue解析之前存在、vue解析之后不存在，能防止用户看到加载过程中的代码。但是实际应用有更好的使用方法，不用它进行标识
+<div id="app" v-cloak><h2>{{message}}</h2></div>
+
+<script src="../js/vue.js"></script>
+<script>
+  setTimeout(function () {
+    const app = new Vue({
+      el:'#app',
+      data:{
+        message:"你好啊"
+      },
+      methods:{
+
+      }
+    })
+
+  },2000)
+
+</script>
+</body>
+</html>

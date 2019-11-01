@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+  <h3>Mustache语法中，可以进行简单的计算</h3>
+  <h2>{{lastname + ' ' + firstname}}</h2>
+  <h2>{{counter *2 }}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      firstname:"jack",
+      lastname:"Gates",
+      counter:100
+    },
+    methods:{
+
+    }
+  })
+</script>
+
+</body>
+</html>

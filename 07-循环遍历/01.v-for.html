@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <ul>
+    <li v-for="(item,index) in lang">{{index+1 + "."+item}}</li>
+  </ul>
+  <h3>遍历对象，重要的value在前面</h3>
+  <ul>
+    <li v-for="(value,key,index) in info">{{index+"-"+key+"-"+value}}</li>
+  </ul>
+
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊",
+      lang:['java','python','go','c'],
+      info:{
+        name:"zhangsan",
+        age:12,
+        height:177
+      }
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <h1>使用v-bind绑定属性</h1>
+  <img v-bind:src="imgURL" alt="">  <a :href="addURL">Search</a>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊",
+      imgURL:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570881557605&di=46f041b72d83cda0ec490a2353a2f6ed&imgtype=0&src=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F0d%2Fd1%2F4f%2F6a%2Fphoto2jpg.jpg",
+      addURL:"https://www.baidu.com"
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

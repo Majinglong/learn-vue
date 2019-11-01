@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<<div id="app">
+  <h2>{{message}}</h2>
+  <button v-on:click="increment()">+</button>
+  <button @click="decrement()">-</button>
+  <h4>v-on的语法糖 @</h4>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:0
+    },
+    methods:{
+      increment(){
+        return this.message++
+      },
+      decrement(){
+        return this.message--
+      }
+    }
+  })
+</script>
+
+
+
+</body>
+</html>

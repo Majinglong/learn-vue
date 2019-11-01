@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn ref="aaa"></cpn>
+  <button @click="test">test</button>
+</div>
+
+<template id="cpn">
+  <div>
+    <h3>{{id}}</h3>
+    <h3>{{name}}</h3>
+  </div>
+
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊"
+    },
+    methods:{
+      test(){
+        console.log(this.$children)
+        console.log(this.$children[0].name)
+        console.log(this.$refs.aaa.show());
+      }
+    },
+    components:{
+      cpn:{
+        template:"#cpn",
+        data(){
+          return {
+            id: "001",
+            name:"张三"
+          }
+        },
+        methods:{
+          show(){
+            console.log("你好啊")
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

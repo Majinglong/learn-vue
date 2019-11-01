@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>父组件num1:{{num1}}</h2>
+  <h2>父组件num2:{{num2}}</h2>
+  <cpn :cnum1="num1" :cnum2="num2" v-on:changnum1="changNum1" @changnum2="changNum2"/>
+</div>
+
+<template id ="cpn1">
+  <div>
+    <h4>cnum1:{{cnum1}}</h4>
+    <h4>dnum1:{{dnum1}}</h4>
+    <input  type="text" v-model="dnum1"/>
+
+    <h4>cnum2:{{cnum2}}</h4>
+    <h4>dnum2:{{dnum2}}</h4>
+    <input type="text" v-model="dnum2"/>
+    <!--<input v-model="dnum2" @input="changednum2"  type="text">-->
+  </div>
+
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      num1:5,
+      num2:6
+    },
+    methods:{
+      changNum1(value){
+        this.num1 = parseFloat(value)
+      },
+      changNum2(value){
+        this.num2 = parseFloat(value)
+      }
+    },
+    components:{
+      cpn:{
+        template:"#cpn1",
+        props:{
+          cnum1:Number,
+          cnum2:Number
+        },
+        data(){
+          return{
+            dnum1:this.cnum1,
+            dnum2:this.cnum2
+          }
+        },
+        watch:{//与data template 同一级
+          dnum1(newValue){//函数名是变量名。传递了新改变后的值
+            this.dnum2 = newValue *100//会自动触发dnum2的修改
+            this.$emit("changnum1",newValue)
+          },
+          dnum2(newValue){
+            this.dnum1 = newValue  / 100
+            this.$emit("changnum2",newValue)
+          }
+        }
+      },
+    }
+  })
+</script>
+</body>
+</html>

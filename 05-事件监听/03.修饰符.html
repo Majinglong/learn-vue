@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <div @click="divClick">
+    <button @click.stop="buttonClick">点击按钮会冒泡到div，可以使用stop禁止</button>
+  </div>
+   <br/>
+  <form  action ="baidu">
+    使用prevent组织默认行动，按照自己的方法来走
+    <input type="submit" @click.prevent="Nosubmit"/>
+  </form>
+  <br/>
+  <input @keyup.enter="keyup" type="text"/>
+  <br/>
+  <button @click.once="buttonOnce">使用once只调用一次</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊"
+    },
+    methods:{
+      buttonClick(){
+        console.log("buttonClick")
+      },
+      divClick(){
+        console.log("divClick")
+      },
+      Nosubmit(){
+        console.log("Nosubmit")
+      },
+      keyup(){
+        console.log("keyup")
+      },
+      buttonOnce(){
+        console.log("buttonOnce")
+      }
+
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    {{message}}
+    <ul>
+        <li v-for="item in lang">{{item}}</li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    const  app = new Vue({
+        el:'#app',
+        data:{
+            message:"我学过的：",
+            lang:["java","python","js","go"]
+        }
+    })
+</script>
+
+</body>
+</html>

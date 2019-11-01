@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <h3 :style="{fontSize:'50px'}">{{message}}</h3>
+  <h3 :style="{fontSize:'50px',color:fontColor}">{{message}}</h3>
+  <h3 :style="{fontSize:'50px',color:fontColor}">{{message}}</h3>
+  <h3 :style="[parm1,parm2]">绑定数组演示</h3>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊",
+      fontColor:'red',
+      parm1:{fontSize:'50px'},
+      parm2:{color:'red'}
+    },
+    methods:{
+      getStyle:function () {
+        return {fontSize:'50px',color:this.fontColor}
+      }
+    }
+  })
+</script>
+</body>
+</html>

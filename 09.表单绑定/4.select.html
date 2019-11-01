@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <select name="abc" id="f1" v-model="lang" multiple size="2">
+    <option value="java">java</option>
+    <option value="python">python</option>
+    <option value="go">go</option>
+    <option value="php">php</option>
+
+  </select>
+  <h2>你选的是：{{lang}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊",
+      lang:[]
+
+    },
+    methods:{
+
+    }
+  })
+</script>
+</body>
+</html>

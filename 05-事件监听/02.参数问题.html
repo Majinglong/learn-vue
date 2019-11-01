@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <button @click="button1">按钮不需传参数，可以省略</button>
+  <button @click="button2">按钮需要参数但是没传，会给方法传一个event</button>
+  <button @click="button3">会默认把event传给第一个参数</button>
+  <button @click="button4($event)">指定传参是event,还是会传给第一个参数</button>
+  <button @click="button5('tom',$event)">传递一个参数和event的标准方法</button>
+  <button @click="button6(tom,$event)">传递一个参数和event的标准方法,参会在data中定义</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:"你好啊",
+      tom:"tom"
+    },
+    methods:{
+      button1(){
+        console.log("button1 click")
+      },
+      button2(name){
+        console.log("button1 click:"+name)
+      },
+      button3(name,event){
+        console.log("button1 click:"+name+";"+event)
+      },
+      button4(name,event){
+        console.log("button1 click:"+name+";"+event)
+      },
+      button5(name,event){
+        console.log("button1 click:"+name+";"+event)
+      },
+      button6(name,event){
+        console.log("button1 click:"+name+";"+event)
+      }
+    }
+  })
+
+  function withoutP(name) {
+    console.log("withoutP。name"+name);
+  }
+  withoutP();//函数中需要传参数但是没有传会显示undefined
+</script>
+</body>
+</html>
