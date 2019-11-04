@@ -7,3 +7,6 @@ console.log(add(10, 20));
 console.log(mul(10, 4));
 
 require('./css/normal.css')
+require('./css/special.less')
+
+document.writeln("<h2>随便写写</h2>")

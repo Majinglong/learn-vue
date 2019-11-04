@@ -14,6 +14,16 @@ module.exports = {
         //webpack使用多个loader时，是从右向左读的。所以先 style-loader再css-loader
         //顺序乱了，在编译的时候报错
         use: [ 'style-loader','css-loader' ] //css-loader只负责加载
+      },
+      {
+        test: /\.less$/,
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "less-loader" // compiles Less to CSS
+        }]
       }
     ]
   }
